@@ -1,94 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboard</title>
-    <!-- Linking Bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <!-- Linking Font Awesome-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!--Linking CSS Stylesheet-->
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
-    <!-- Jumbotron -->
-    <div class="jumbotron container-fluid mt-2 text-center p-2" style="background-color:#404040; color: white;">
-        <h1> <strong> Weather Dashboard </strong></h1>
-    </div>
-    <div class="container">
-        <!-- Searching cities -->
-        <div class="row">
-            <div class="col-sm-4 bg-light">
-                <!-- Handling inputs-->
-                <h4 class="pt-1"><strong>Locate a City:</strong></h4>
-                <!-- Text box-->
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="search-city" aria-label="City Search" aria-describedby="search-button">
-                    <div class="input-group-append">
-                        <button class="btn bg-danger text-light" id="search-button"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-                <!-- Add search history here later-->
-                <button class=" btn btn-warning" type="button" id="clear-history">Clear history</button>
-                <ul class="list-group">
-                </ul>
-            </div>
-            <div class="col-sm-8">
-                <div class="row ml-2 border border-dark rounded">
-                    <div class="col-sm-12" id="current-weather">
-                        <h3 class="city-name mb-1 mt-2 bolder" id="current-city"></h3>
-                        <p>Temperature:<span class="current" id="temperature"></span></p>
-                        <p>Humidity:<span class="current" id="humidity"></span></p> 
-                        <p>Wind Speed:<span class="current" id="wind-speed"></span></p>
-                        <p>UV index:<span class="current bg-danger rounded py-2 px-2 text-white" id="uv-index"></span></p> 
-                    </div>
-                </div>
-                <!-- API data will be dropped in here (five day forcast)-->
-                <div class="col-sm-12" id ="future-weather">
-                    <h3>5-Day Forecast:</h3>
-                    <div class="row text-light">
-                        <div class="col-sm-2 bg-danger forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
-                            <p id="fDate0"></p>
-                            <p id="fImg0"></p>
-                            <p>Temp:<span id="fTemp0"></span></p>
-                            <p>Humidity:<span id="fHumidity0"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-danger forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
-                            <p id="fDate1"></p>
-                            <p id="fImg1"></p>
-                            <p>Temp:<span id="fTemp1"></span></p>
-                            <p>Humidity:<span id="fHumidity1"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-danger forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                            <p id="fDate2"></p>
-                            <p id="fImg2"></p>
-                            <p>Temp:<span id="fTemp2"></span></p>
-                            <p>Humidity:<span id="fHumidity2"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-danger forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-                            <p id="fDate3"></p>
-                            <p id="fImg3"></p>
-                            <p>Temp:<span id="fTemp3"></span></p>
-                            <p>Humidity:<span id="fHumidity3"></span></p>
-                        </div>
-                        <div class="col-sm-2 bg-danger forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
-                            <p id="fDate4"></p>
-                            <p id="fImg4"></p>
-                            <p>Temp:<span id="fTemp4"></span></p>
-                            <p>Humidity:<span id="fHumidity4"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-        </div>
-    </div>
 
-    <!-- bootstrap script-->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!--Linking javascript--> 
-    <script src="./assets/js/app.js"></script>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="./assets/style/reset.css" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
+		<link rel="icon" type="image/x-icon" href="./assets/icon/favicon.ico">
+	<title>Weather Dashboard</title>
+</head>
+
+<body>
+
+	<header >
+		<h1 class="display-3">Weather Dashboard</h1>
+
+	</header>
+
+	<!--Main Section-->
+
+	<main class="row">
+		<!-- Sidenav-->
+		<section class="col-12 col-md-4 col-lg-3">
+			<nav class="navbar bg-light">
+				<div class="container-fluid">
+					<h2>Search for a City</h2>
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" id="city" type="search" placeholder="Search for a City" aria-label="Search">
+						<button class="btn btn-outline-success" id="search" type="submit">Search</button>
+					</form>
+				</div>
+			</nav>
+			<div class="card custom-card">
+				<h3 class="card-header">Cities</h3>
+				<ul class="card-body list-group" id="searchHistory"></ul>
+				<button id="clearHistory"> Clear History</button>
+			</div>
+		</section>
+    	<!-- End of Sidenav-->
+
+		
+		<div class="col-sm-9" id="weatherForecast">
+
+		<!--Chosen City - Current Weather-->
+			<div class="card" style="width:100%">
+				<div class="card-body">
+					<h5 class="card-title" id="chosenCity">Chosen City</h5>
+					<h6 class="card-subtitle mb-2 text-muted" id="currentDate">Date</h6>
+					<img class="card-text" id="icon">
+					<p class="card-text" id="temperature"></p>
+					<p class="card-text" id="wind"></p>
+					<p class="card-text" id="humidity"></p>
+					<p class="card-text">UV index: <span id="uvIndex"></span>
+
+				</div>
+			</div>
+
+		<!--End of Chosen City -->
+
+			<!--CARDS - 5-Day Forecast-->
+			<h2> 5-Day Forecast</h2>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title forecastDate" id="forecastDate0">DATE</h5>
+							<!--<img src="..." class="card-img-top" alt="..."> --> 
+							<p class="card-text" id="forecastTemperature0">Temperature:</p>
+							<img class="card-text" id="forecastIcon0">
+							<p class="card-text" id="forecastWind0">Wind:</p>
+							<p class="card-text" id="forecastHumidity0">Humidity:</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title forecastDate" id="forecastDate1">DATE</h5>
+							<!--<img src="..." class="card-img-top" alt="..."> --> 
+							<p class="card-text" id="forecastTemperature1">Temperature:</p>
+							<img class="card-text" id="forecastIcon1">
+							<p class="card-text" id="forecastWind1">Wind:</p>
+							<p class="card-text" id="forecastHumidity1">Humidity:</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title forecastDate" id="forecastDate2">DATE</h5>
+							<!--<img src="..." class="card-img-top" alt="..."> -->
+							<p class="card-text" id="forecastTemperature2">Temperature:</p>
+							<img class="card-text" id="forecastIcon2">
+							<p class="card-text" id="forecastWind2">Wind:</p>
+							<p class="card-text" id="forecastHumidity2">Humidity:</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title forecastDate" id="forecastDate3">DATE</h5>
+							<!--<img src="..." class="card-img-top" alt="..."> -->
+							<p class="card-text" id="forecastTemperature3">Temperature:</p>
+							<img class="card-text" id="forecastIcon3">
+							<p class="card-text" id="forecastWind3">Wind:</p>
+							<p class="card-text" id="forecastHumidity3">Humidity:</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h5 class="card-title forecastDate" id="forecastDate4">DATE</h5>
+							<!--<img src="..." class="card-img-top" alt="..."> -->
+							<p class="card-text" id="forecastTemperature4">Temperature:</p>
+							<img class="card-text" id="forecastIcon4">
+							<p class="card-text" id="forecastWind4">Wind:</p>
+							<p class="card-text" id="forecastHumidity4">Humidity:</p>
+						</div>
+					</div>
+				</div>
+				<!--End of 5-day forecast Cards-->
+
+			</div>
+		</main>
+		<!--End of Main Section-->
+
+<!--Script Links-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>-->
+		<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+		<script src="./assets/js/script.js"></script>
 </body>
+
 </html>
